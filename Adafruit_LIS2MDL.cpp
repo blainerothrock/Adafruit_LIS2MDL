@@ -173,6 +173,7 @@ bool Adafruit_LIS2MDL::_init(void) {
     return false;
   }
 
+  if (config_a) delete config_a; 
   config_a = new Adafruit_BusIO_Register(i2c_dev, spi_dev, ADDRBIT8_HIGH_TOREAD,
                                          LIS2MDL_CFG_REG_A, 1);
 
