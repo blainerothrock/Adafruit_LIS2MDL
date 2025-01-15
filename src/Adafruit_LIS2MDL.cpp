@@ -93,12 +93,12 @@ Adafruit_LIS2MDL::Adafruit_LIS2MDL(int32_t sensorID) {
  *            The Wire object to be used for I2C connections.
  *    @return True if initialization was successful, otherwise false.
  */
-bool Adafruit_LIS2MDL::begin(uint8_t i2c_address, TwoWire *wire) {
+bool Adafruit_LIS2MDL::begin(uint8_t i2c_address, TwoWire *wire) {  
   if (!i2c_dev) {
     i2c_dev = new Adafruit_I2CDevice(i2c_address, wire);
   }
-  spi_dev = NULL;
 
+  spi_dev = NULL;
   if (!i2c_dev->begin()) {
     return false;
   }
@@ -172,9 +172,7 @@ bool Adafruit_LIS2MDL::_init(void) {
     // No LIS2MDL detected ... return false
     return false;
   }
-
-  if (config_a)
-    delete config_a;
+  
   config_a = new Adafruit_BusIO_Register(i2c_dev, spi_dev, ADDRBIT8_HIGH_TOREAD,
                                          LIS2MDL_CFG_REG_A, 1);
 
